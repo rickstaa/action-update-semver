@@ -24,7 +24,9 @@ git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 # Update MAJOR/MINOR tag
 git tag -fa "${MAJOR}" -m "${MESSAGE}"
 [ "${MAJOR_VERSION_TAG_ONLY}" = "true" ] || git tag -fa "${MINOR}" -m "${MESSAGE}"
-[ "${MOVE_PATCH_TAG}" = "true" ] || git tag -fa "${TAG}" -m "${MESSAGE}"
+if [ ! -z "${INPUT_TAG}" ] && [ "${MOVE_PATCH_TAG}" = "true" ]; then # Only apply when explicity
+  git tag -fa "${TAG}" -m "${MESSAGE}"
+fi
 
 # Set up remote url for checkout@v1 action.
 if [ -n "${INPUT_GITHUB_TOKEN}" ]; then
@@ -33,5 +35,7 @@ fi
 
 # Push
 [ "${MAJOR_VERSION_TAG_ONLY}" = "true" ] || git push --force origin "${MINOR}"
-[ "${MOVE_PATCH_TAG}" = "true" ] || git push --force origin "${TAG}"
+if [ ! -z "${INPUT_TAG}" ] && [ "${MOVE_PATCH_TAG}" = "true" ]; then
+  git push --force origin "${TAG}"
+fi
 git push --force origin "${MAJOR}"

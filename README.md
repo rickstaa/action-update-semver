@@ -5,8 +5,8 @@
 [![release](https://github.com/rickstaa/action-update-semver/workflows/release/badge.svg)](https://github.com/rickstaa/action-update-semver/actions?query=workflow%3Arelease)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rickstaa/action-update-semver?logo=github&sort=semver)](https://github.com/rickstaa/action-update-semver/releases)
 
-This action updates major/minor release tags on a tag push.
-e.g. Update `v1` and `v1.2` tag when released `v1.2.3`.
+This action updates major/minor release tags on a tag push. e.g. Update `v1` and `v1.2` tag when
+released `v1.2.3`. It can also be used to move the patch version up to the latest commit.
 
 It works well for GitHub Action. ref: <https://help.github.com/en/articles/about-actions#versioning-your-action>
 
@@ -27,6 +27,9 @@ It works well for GitHub Action. ref: <https://help.github.com/en/articles/about
 ### `move_patch_tag`
 
 **Optional**. Moves the existing tag to the latest commit inside the github action. Default: `false`. Useful when you want to use [auto-changelog](https://www.npmjs.com/package/auto-changelog) to automatically add a changelog to your release.
+
+| ⚠️  | In order to prevent unexpected changes this only works when you explicitly specified a tag. |
+| --- | ------------------------------------------------------------------------------------------- |
 
 ### `github_token`
 
