@@ -1,4 +1,4 @@
-name: "Update major/minor semver"
+name: "Update semver"
 description: "Updates major/minor release tags on a tag push"
 author: "Rick Staa"
 inputs:
