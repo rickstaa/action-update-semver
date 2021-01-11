@@ -1,7 +1,7 @@
 # GitHub Action: Update major/minor semver
 
 [![Docker Image CI](https://github.com/rickstaa/action-update-semver/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/rickstaa/action-update-semver/actions)
-[![reviewdog](https://github.com/rickstaa/action-update-semver/workflows/reviewdog/badge.svg)](https://github.com/rickstaa/action-update-semver/actions?query=workflow%3Areviewdog)
+[![Code quality CI](https://github.com/rickstaa/action-update-semver/workflows/Code%20quality%20CI/badge.svg)](https://github.com/rickstaa/action-update-semver/actions?query=workflow%3A%22Code+quality+CI%22)
 [![release](https://github.com/rickstaa/action-update-semver/workflows/release/badge.svg)](https://github.com/rickstaa/action-update-semver/actions?query=workflow%3Arelease)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rickstaa/action-update-semver?logo=github&sort=semver)](https://github.com/rickstaa/action-update-semver/releases)
 
