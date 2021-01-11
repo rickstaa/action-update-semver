@@ -21,7 +21,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: ${{ steps.reporter.outputs.value }}
           level: warning
-
   hadolint:
     name: runner / hadolint
     runs-on: ubuntu-latest
@@ -38,7 +37,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: ${{ steps.reporter.outputs.value }}
           level: warning
-
   misspell:
     name: runner / misspell
     runs-on: ubuntu-latest
