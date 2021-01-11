@@ -1,9 +1,9 @@
 # GitHub Action: Update major/minor semver
 
-[![Docker Image CI](https://github.com/haya14busa/action-update-semver/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/haya14busa/action-update-semver/actions)
-[![reviewdog](https://github.com/haya14busa/action-update-semver/workflows/reviewdog/badge.svg)](https://github.com/haya14busa/action-update-semver/actions?query=workflow%3Areviewdog)
-[![release](https://github.com/haya14busa/action-update-semver/workflows/release/badge.svg)](https://github.com/haya14busa/action-update-semver/actions?query=workflow%3Arelease)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/haya14busa/action-update-semver?logo=github&sort=semver)](https://github.com/haya14busa/action-update-semver/releases)
+[![Docker Image CI](https://github.com/rickstaa/action-update-semver/workflows/Docker%20Image%20CI/badge.svg)](https://github.com/rickstaa/action-update-semver/actions)
+[![reviewdog](https://github.com/rickstaa/action-update-semver/workflows/reviewdog/badge.svg)](https://github.com/rickstaa/action-update-semver/actions?query=workflow%3Areviewdog)
+[![release](https://github.com/rickstaa/action-update-semver/workflows/release/badge.svg)](https://github.com/rickstaa/action-update-semver/actions?query=workflow%3Arelease)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/rickstaa/action-update-semver?logo=github&sort=semver)](https://github.com/rickstaa/action-update-semver/releases)
 
 This action updates major/minor release tags on a tag push.
 e.g. Update `v1` and `v1.2` tag when released `v1.2.3`.
@@ -23,6 +23,10 @@ It works well for GitHub Action. ref: <https://help.github.com/en/articles/about
 ### `major_version_tag_only`
 
 **Optional**. Create only major version tags. Default: `false`
+
+### `move_patch_tag`
+
+**Optional**. Moves the existing tag to the latest commit inside the github action. Default: `false`. Useful when you want to use [auto-changelog](https://www.npmjs.com/package/auto-changelog) to automatically add a changelog to your release.
 
 ### `github_token`
 
@@ -46,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: haya14busa/action-update-semver@v1
+      - uses: rickstaa/action-update-semver@v1
         with:
           major_version_tag_only: true  # (optional, default is "false")
 ```
@@ -67,10 +71,14 @@ jobs:
       update-semver:
         runs-on: ubuntu-latest
         steps:
-          - uses: actions/checkout@v1
-          - uses: haya14busa/action-update-semver@v1
+          - uses: actions/checkout@v2
+          - uses: rickstaa/action-update-semver@v1
             with:
               github_token: \${{ secrets.github_token }}
     EOF
 
 </details>
+
+## Acknowledgement
+
+This action is based on [@haya14busa's](https://github.com/haya14busa/) [update-major-minor-semver](https://github.com/marketplace/actions/update-major-minor-semver).
