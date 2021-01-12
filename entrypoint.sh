@@ -1,5 +1,5 @@
 #!/bin/sh
-set -x
+set -eu
 
 cd "${GITHUB_WORKSPACE}" || exit
 
@@ -22,9 +22,12 @@ git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
 # Update MAJOR/MINOR tag
+[ "${MAJOR_VERSION_TAG_ONLY}" = 'true' ] && echo_str="major version tag" || echo_str="major/minor version tags"
+echo "[action-update-semver] Create ${echo_str}."
 git tag -fa "${MAJOR}" -m "${MESSAGE}"
-[ "${MAJOR_VERSION_TAG_ONLY}" = "true" ] || git tag -fa "${MINOR}" -m "${MESSAGE}"
-if [ ! -z "${INPUT_TAG}" ] && [ "${MOVE_PATCH_TAG}" = "true" ]; then # Only apply when explicity
+[ "${MAJOR_VERSION_TAG_ONLY}" = 'true' ] || git tag -fa "${MINOR}" -m "${MESSAGE}"
+if [ ! -z "${INPUT_TAG}" ] && [ "${MOVE_PATCH_TAG}" = 'true' ]; then # Only apply when explicity
+  echo "[action-update-semver] Moves ${TAG} to the latest commit."
   git tag -fa "${TAG}" -m "${MESSAGE}"
 fi
 
@@ -33,7 +36,7 @@ if [ -n "${INPUT_GITHUB_TOKEN}" ]; then
   git remote set-url origin "https://${GITHUB_ACTOR}:${INPUT_GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
 fi
 
-# Push
+echo "[action-update-semver] Force push tags."
 [ "${MAJOR_VERSION_TAG_ONLY}" = "true" ] || git push --force origin "${MINOR}"
 if [ ! -z "${INPUT_TAG}" ] && [ "${MOVE_PATCH_TAG}" = "true" ]; then
   git push --force origin "${TAG}"
