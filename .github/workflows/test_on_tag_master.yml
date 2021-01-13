@@ -7,7 +7,7 @@ jobs:
   on-main-check:
     runs-on: ubuntu-latest
     outputs:
-      on-main: ${{ steps.contains_Tag.outputs.retval }}
+      on-main: ${{ steps.contains_tag.outputs.retval }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -22,10 +22,10 @@ jobs:
     needs: on-main-check
     if: ${{ needs.on-main-check.outputs.on-main }}
     steps:
-      - run: Tag was pushed to main.
+      - run: echo "Tag was pushed to main."
   tag-not-on-main-job:
     runs-on: ubuntu-latest
     needs: on-main-check
     if: "! ${{ needs.on-main-check.outputs.on-main }}"
     steps:
-      - run: Tag was not pushed to main.
+      - run: echo "Tag was not pushed to main."
