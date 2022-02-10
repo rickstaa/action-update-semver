@@ -11,7 +11,7 @@ jobs:
         with:
           fetch-depth: "0"
       - name: "Tag minor version"
-        uses: rickstaa/action-create-tag@fix_3
+        uses: rickstaa/action-create-tag@main
         with:
           tag: "v0.7"
           message: "Test message"
