@@ -12,11 +12,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-<<<<<<< HEAD
-      - uses: rickstaa/action-contains-tag@fix_action_retval
-=======
       - uses: rickstaa/action-contains-tag@main
->>>>>>> test/action-create-tag2
         id: contains_tag
         with:
           reference: "main"
