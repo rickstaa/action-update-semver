@@ -17,7 +17,7 @@ jobs:
           tag: "Latest"
       - run: |
           if [[ ${{ steps.contains_tag.outputs.retval }} != 'true' ]]; then
-            echo "Branch/commit did contain the tag."
+            echo "Branch/commit did contain the tag :)."
           else
             echo "Branch/commit did not contain the tag."
           fi
