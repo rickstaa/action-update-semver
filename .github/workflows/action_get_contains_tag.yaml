@@ -1,0 +1,23 @@
+name: test rickstaa/action-contains-tag
+on:
+  push:
+    branches:
+      - main
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: rickstaa/action-contains-tag@v1
+        id: contains_tag
+        with:
+          reference: "main"
+          tag: "Latest"
+      - run: |
+          if [[ ${{ steps.contains_tag.outputs.retval }} != 'true' ]]; then
+            echo "Branch/commit did contain the tag."
+          else
+            echo "Branch/commit did not contain the tag."
+          fi
