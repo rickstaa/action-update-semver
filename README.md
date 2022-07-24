@@ -82,6 +82,10 @@ jobs:
 
 </details>
 
+## Contributing
+
+Feel free to open an issue if you have ideas on how to make this GitHub action better or if you want to report a bug! All contributions are welcome. :rocket: Please consult the [contribution guideliness](CONTRIBUTING.md) for more information.
+
 ## Acknowledgement
 
 This action is based on [@haya14busa's](https://github.com/haya14busa/) [update-major-minor-semver](https://github.com/marketplace/actions/update-major-minor-semver).
