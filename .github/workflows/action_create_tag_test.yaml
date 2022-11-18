@@ -12,5 +12,5 @@ jobs:
           fetch-depth: 0
       - uses: rickstaa/action-create-tag@auto_tag_space_replace
         with:
-          tag: "test-tag-1"
+          tag: "test tag 1"
           message: "Test tag 1"
