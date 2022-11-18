@@ -18,7 +18,9 @@ jobs:
         with:
           tag: "test tag force"
           message: "Test tag force"
+          force_push_tag: true
       - uses: varya/action-create-tag@main
         with:
           tag: "test tag no verify"
           message: "Test tag no verify"
+          no_verify_tag: true
