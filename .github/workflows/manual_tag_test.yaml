@@ -8,5 +8,15 @@ jobs:
   tag-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: git tag "test-tag-manual"
+      # - uses: actions/checkout@v3
+      # - run: git tag "test-tag-manual"
+      - name: Create tag
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/test-tag-manual4',
+              sha: context.sha
+            })
