@@ -1,0 +1,20 @@
+name: Run PRB0t check
+
+on: 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  prB0t_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      # Check whether PRB0T was used
+      - uses: rickstaa/check_prb0t_action@main
+        id: prb0t_check
+
+      # Print results
+      - run: |
+          echo "PRB0t used: ${{ steps.prb0t_check.outputs.used_prb0t }}"
