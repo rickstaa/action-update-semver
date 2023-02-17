@@ -13,9 +13,9 @@ jobs:
 
       # Check whether PRB0T was used
       - name: Check if PRB0t was used
-        id: prbot_check
+        id: step1
         uses: rickstaa/check_prb0t_action@main
 
       # Print results
       - name: Print result
-        run: echo "PRB0t used ${{ steps.prbot_check.outputs.used_prb0t }}"
+        run: echo "PRB0t used ${{ steps.step1.outputs.test }}"
