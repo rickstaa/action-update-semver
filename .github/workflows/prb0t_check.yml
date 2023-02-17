@@ -12,9 +12,10 @@ jobs:
       - uses: actions/checkout@v3
 
       # Check whether PRB0T was used
-      - uses: rickstaa/check_prb0t_action@main
+      - name: Check if PRB0t was used
         id: prb0t_check
+        uses: rickstaa/check_prb0t_action@main
 
       # Print results
-      - run: |
-          echo "PRB0t used: ${{ steps.prb0t_check.outputs.used_prb0t }}"
+      - name: Print result
+        run: echo "PRB0t used ${{ steps.prb0t_check.outputs.used_prb0t }}"
