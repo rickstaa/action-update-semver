@@ -18,5 +18,4 @@ jobs:
 
       # Print results
       - name: Print result
-        run: echo PRB0t used ${{ steps.step1.outputs.test }}
-        shell: bash
+        run: echo ${{ steps.step1.outputs.used_prb0t }}
