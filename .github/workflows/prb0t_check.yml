@@ -1,9 +1,5 @@
-name: Run PRB0t check
-
-on: 
-  pull_request:
-    branches:
-      - main
+name: PRB0t check action
+on: [pull_request]
 
 jobs:
   prB0t_check:
@@ -11,17 +7,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Check whether PRB0T was used
-      - name: Check if PRB0t was used
-        id: step1
-        uses: rickstaa/check_prb0t_action@main
+      # Check whether PRB0T was used.
+      - uses: rickstaa/used-prb0t-action@v1
+        id: prb0t_check
 
-      # Print results
-      - name: Print result using environment variable
-        run: |
+      # Print result using the env variable.
+      -  run: |
           echo "${{ env.USED_PRB0T }}"
 
-      # Print results
-      - name: Print result using output
-        run: |
-          echo "${{ steps.step1.outputs.used_prb0t }}"
+      # Print result using the action output.
+      - run: |
+          echo "PRB0t used: ${{ steps.prb0t_check.outputs.used_prb0t }}"
