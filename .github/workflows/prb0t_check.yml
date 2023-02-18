@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # Check whether PRB0T was used.
-      - uses: rickstaa/used-prb0t-action@v1
+      - uses: rickstaa/check-prb0t-action@v1
         id: prb0t_check
 
       # Print result using the env variable.
