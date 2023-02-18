@@ -17,6 +17,11 @@ jobs:
         uses: rickstaa/check_prb0t_action@main
 
       # Print results
-      - name: Print result
+      - name: Print result using environment variable
+        run: |
+          echo "${{ env.USED_PRB0T }}"
+
+      # Print results
+      - name: Print result using output
         run: |
           echo "${{ steps.step1.outputs.used_prb0t }}"
