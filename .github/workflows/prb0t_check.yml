@@ -7,6 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Display context
+        run : echo '${{ toJSON(github) }}'
+
       # Check whether PRB0T was used.
       - uses: rickstaa/check-prb0t-action@main
         id: prb0t_check
