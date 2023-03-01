@@ -41,7 +41,7 @@ jobs:
           echo "Tag already present: ${{ steps.tag_create.outputs.tag_exists }}"
 
       - uses: rickstaa/action-create-tag@main
-        id: tag_create
+        id: tag_create2
         with:
           tag: "test tag exists not"
           message: "Test tag exists"
@@ -52,7 +52,7 @@ jobs:
 
       # Print result using the action output.
       - run: |
-          echo "Tag already present: ${{ steps.tag_create.outputs.tag_exists }}"
+          echo "Tag already present: ${{ steps.tag_create2.outputs.tag_exists }}"
 
       - uses: rickstaa/action-create-tag@add_tag_exists_conditions
         with:
