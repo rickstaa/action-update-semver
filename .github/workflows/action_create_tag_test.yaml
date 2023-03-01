@@ -26,14 +26,15 @@ jobs:
           message: "Test tag no verify"
           no_verify_tag: true
           tag_exists_error: false
-      - uses: rickstaa/action-create-tag@add_tag_exists_conditions  
+      - uses: rickstaa/action-create-tag@add_tag_exists_conditions 
+        id: tag_create
         with:
           tag: "test tag exists"
           message: "Test tag exists"
           tag_exists_error: false
       # Print result using the env variable.
       -  run: |
-          echo "Tag already present: ${{ env.TAG_EXISTS }}"
+          echo "Tag already present: ${{ env.TAG_EXISTS }} :)"
 
       # Print result using the action output.
       - run: |
