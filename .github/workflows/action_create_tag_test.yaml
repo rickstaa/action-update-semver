@@ -10,23 +10,23 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: rickstaa/action-create-tag@add_tag_exists_conditions
+      - uses: rickstaa/action-create-tag@main
         with:
           tag: "test tag regular"
           message: "Test tag regular"
           tag_exists_error: false
-      - uses: rickstaa/action-create-tag@add_tag_exists_conditions
+      - uses: rickstaa/action-create-tag@main
         with:
           tag: "test tag force"
           message: "Test tag force"
           force_push_tag: true
-      - uses: rickstaa/action-create-tag@add_tag_exists_conditions
+      - uses: rickstaa/action-create-tag@main
         with:
           tag: "test tag no verify"
           message: "Test tag no verify"
           no_verify_tag: true
           tag_exists_error: false
-      - uses: rickstaa/action-create-tag@add_tag_exists_conditions
+      - uses: rickstaa/action-create-tag@main
         id: tag_create
         with:
           tag: "test tag exists"
@@ -40,7 +40,21 @@ jobs:
       - run: |
           echo "Tag already present: ${{ steps.tag_create.outputs.tag_exists }}"
 
+      - uses: rickstaa/action-create-tag@main
+        id: tag_create
+        with:
+          tag: "test tag exists not"
+          message: "Test tag exists"
+          tag_exists_error: false
+      # Print result using the env variable.
+      - run: |
+          echo "Tag already present: ${{ env.TAG_EXISTS }}"
+
+      # Print result using the action output.
+      - run: |
+          echo "Tag already present: ${{ steps.tag_create.outputs.tag_exists }}"
+
       - uses: rickstaa/action-create-tag@add_tag_exists_conditions
         with:
           tag: "test tag exists"
-          message: "Test tag exists"
+          message: "Test tag exists crash"
