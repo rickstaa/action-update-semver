@@ -25,7 +25,7 @@ jobs:
         uses: rickstaa/action-create-tag@main
         id: tag_create2
         with:
-          tag: "v4.0.10"
+          tag: 'v4.0.10'
           message: "Test tag exists"
           tag_exists_error: false
       # Print result using the env variable.
