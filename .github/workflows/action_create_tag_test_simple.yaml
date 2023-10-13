@@ -1,0 +1,38 @@
+name: test rickstaa/action-create-tag (simple)
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  tag-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Print GitHub context
+        run: |
+          echo "GitHub context: ${{ toJson(github) }}"
+
+      - name: Print GITHUB_SHA
+        run: |
+          echo "GITHUB_SHA: ${{ github.sha }}"
+
+      - name: Test tag 'v4.0.10' exists no error
+        uses: rickstaa/action-create-tag@main
+        id: tag_create2
+        with:
+          tag: "v4.0.10"
+          message: "Test tag exists"
+          tag_exists_error: false
+      # Print result using the env variable.
+      - name: Print tag exists no error result using the env variable.
+        run: |
+          echo "Tag already present: ${{ env.TAG_EXISTS }}"
+      # Print result using the action output.
+      - name: Print tag exists no error result using the action output.
+        run: |
+          echo "Tag already present: ${{ steps.tag_create2.outputs.tag_exists }}"
