@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-# Apply hotfix for 'fatal: unsafe repository' error (see #13)
+# Apply hotfix for 'fatal: unsafe repository' error (see #13).
 git config --global --add safe.directory "${GITHUB_WORKSPACE}"
 
 cd "${GITHUB_WORKSPACE}" || exit
@@ -24,7 +24,7 @@ MESSAGE="${INPUT_MESSAGE:-Release ${TAG}}"
 git config user.name "${GITHUB_ACTOR}"
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-# Update MAJOR/MINOR tag
+# Update MAJOR/MINOR tag.
 [ "${MAJOR_VERSION_TAG_ONLY}" = 'true' ] && echo_str="major version tag" || echo_str="major/minor version tags"
 echo "[action-update-semver] Create ${echo_str}."
 git tag -fa "${MAJOR}" -m "${MESSAGE}"
