@@ -17,6 +17,12 @@ inputs:
   move_patch_tag:
     description: "Optional. Move the patch tag to the latest commit."
     required: false
+  gpg_private_key:
+    description: "Optional. GPG key to sign the tag with."
+    required: false
+  gpg_passphrase:
+    description: "Optional. GPG key passphrase."
+    required: false
 runs:
   using: "docker"
   image: "Dockerfile"
