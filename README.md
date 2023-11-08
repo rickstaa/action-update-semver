@@ -41,16 +41,16 @@ It's designed to seamlessly integrate with GitHub Actions. For more details on v
 
 ## Example Usage
 
-### Simple example
+### General example
 
 ```yaml
 name: Update Semver
 on:
   push:
     branches-ignore:
-      - '**'
+      - "**"
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
 jobs:
   update-semver:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: rickstaa/action-update-semver@v1
         with:
-          major_version_tag_only: true  # (optional, default is "false")
+          major_version_tag_only: true # (optional, default is "false")
 ```
 
 Certainly! Here's a refined version of your documentation:
@@ -72,23 +72,28 @@ To sign tags with GPG, follow these steps:
 First, [generate a GPG key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-gpg-key). Once generated, export the GPG private key in ASCII armored format to your clipboard using one of the following commands based on your operating system:
 
 - **macOS:**
+
   ```shell
   gpg --armor --export-secret-key joe@foo.bar | pbcopy
   ```
 
 - **Ubuntu (GNU base64):**
+
   ```shell
-  gpg --armor --export-secret-key joe@foo.bar -w0 | xclip
+  gpg --armor --export-secret-key joe@foo.bar -w0 | xclip -selection clipboard
   ```
 
 - **Arch:**
+
   ```shell
   gpg --armor --export-secret-key joe@foo.bar | xclip -selection clipboard -i
   ```
 
 - **FreeBSD (BSD base64):**
+
   ```shell
   gpg --armor --export-s[.github/workflows/update_semver.yml](.github/workflows/update_semver.yml)e your GPG passphrase.
+  ```
 
 #### 3. Update Workflow YAML
 
@@ -99,9 +104,9 @@ name: Update Semver
 on:
   push:
     branches-ignore:
-      - '**'
+      - "**"
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
 jobs:
   update-semver:
     runs-on: ubuntu-latest
@@ -111,7 +116,7 @@ jobs:
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg_passphrase: ${{ secrets.PASSPHRASE }}
-          major_version_tag_only: true  # (optional, default is "false")
+          major_version_tag_only: true # (optional, default is "false")
 ```
 
 This workflow will now sign tags using the specified GPG key during tag creation.
